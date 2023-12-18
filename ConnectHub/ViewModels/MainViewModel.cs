@@ -7,36 +7,39 @@ namespace ConnectHub.ViewModels;
 
 public partial class MainViewModel : ObservableObject
 {
-    private readonly IPersonRepository _personRepository;
+    [RelayCommand]
 
-    public MainViewModel(IPersonRepository personRepository)
+    private async Task NavigateToAdd()
     {
-        _personRepository = personRepository;
-        
+        await Shell.Current.GoToAsync("AddPersonPage");
     }
-
-    [ObservableProperty]
-    private Person _registrationForm = new();
-
-    [ObservableProperty]
-    private ObservableCollection<IPerson> _personsList = [];
 
     [RelayCommand]
-    public void AddContentToList ()
+
+    private async Task NavigateToList()
     {
-        if (RegistrationForm != null && !string.IsNullOrWhiteSpace(RegistrationForm.Email)) 
-        {
-            var result = _personRepository.AddPersonToList(RegistrationForm);
-            if (result) 
-            {
-                PersonsList = (ObservableCollection<IPerson>)_personRepository.GetPersonsFromList();
-            }
-        }
+        await Shell.Current.GoToAsync("PersonsListPage");
     }
 
-    public void UpdateCustomerList () 
+    [RelayCommand]
+
+    private async Task NavigateToShowPerson()
     {
-        PersonsList = new ObservableCollection<IPerson>(_personRepository.GetPersonsFromList());
-    
+        await Shell.Current.GoToAsync("ShowPersonPage");
     }
+
+    [RelayCommand]
+
+    private async Task NavigateToUpdate()
+    {
+        await Shell.Current.GoToAsync("UpdatePersonPage");
+    }
+
+    [RelayCommand]
+
+    private async Task NavigateToRemove()
+    {
+        await Shell.Current.GoToAsync("RemovePersonPage");
+    }
+
 }

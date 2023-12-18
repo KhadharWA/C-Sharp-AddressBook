@@ -4,6 +4,9 @@ namespace Shared.Interfaces;
 
 public interface IPersonRepository
 {
+
+    event EventHandler PersonListUpdated;
+
     bool AddPersonToList(IPerson person);
 
     bool RemovePersonFromList(string email);
