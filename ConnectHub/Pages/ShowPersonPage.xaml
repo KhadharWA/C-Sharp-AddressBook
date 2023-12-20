@@ -2,11 +2,49 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ConnectHub.Pages.ShowPersonPage"
+             xmlns:models="clr-namespace:Shared.Models;assembly=Shared"
+             xmlns:viewmodels="clr-namespace:ConnectHub.ViewModels"
+             x:DataType="{x:Type viewmodels:ShowViewModel}"
+             
+             
              Title="ShowPersonPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Show a specific person in the list!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <Grid RowDefinitions="Auto, *" Margin="20">
+            <VerticalStackLayout Grid.Row="0">
+                <Label Text="Contact List" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold" />
+            
+
+
+            <StackLayout Grid.Row="1" Margin="0,20,0,0">
+
+                <Label Text="Enter the contact email"/>
+                <Entry Text="{Binding EmailInput}"/>
+
+                <Button Text="Select Person" Command="{Binding SelectPersonCommand}" CommandParameter="{Binding EmailInput}" Margin="0,20,0,20" Padding="0,10"/>
+
+            </StackLayout>
+            </VerticalStackLayout>
+
+            <CollectionView Grid.Row="2" ItemsSource="{Binding PersonsList}" Margin="0,20,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type models:Person}">
+                        <Grid ColumnDefinitions="*, Auto" Padding="10">
+                            <StackLayout Grid.Column="0">
+
+                                <Label Text="{Binding FirstName}" FontSize="16"/>
+                                <Label Text="{Binding LastName}" FontSize="16"/>
+                                <Label Text="{Binding Email}" FontSize="16"/>
+                                <Label Text="{Binding PhoneNumber}" FontSize="16"/>
+                                <Label Text="{Binding Address}" FontSize="16"/>
+
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+
+
+    </ScrollView>
 </ContentPage>

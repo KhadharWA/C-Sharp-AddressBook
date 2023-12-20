@@ -11,14 +11,12 @@
     Shell.NavBarIsVisible="False"
     Title="ConnectHub">
 
-    
-        
-        <ShellContent Title="Main Menu" Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
-        <ShellContent Title="Add Person" Route="AddPersonPage" ContentTemplate="{DataTemplate pages:AddPersonPage}" />
+
         <ShellContent Title="Contact List" Route="PersonsListPage" ContentTemplate="{DataTemplate pages:PersonsListPage}" />
+        <ShellContent Title="Add Person" Route="AddPersonPage" ContentTemplate="{DataTemplate pages:AddPersonPage}" />
         <ShellContent Title="Show A Contact" Route="ShowPersonPage" ContentTemplate="{DataTemplate pages:ShowPersonPage}" />
         <ShellContent Title="Update Contact" Route="UpdatePersonPage" ContentTemplate="{DataTemplate pages:UpdatePersonPage}" />
-        <ShellContent Title="Remove Contact" Route="RemovePersonPage" ContentTemplate="{DataTemplate pages:RemovePersonPage}" />
+        
         
     
 

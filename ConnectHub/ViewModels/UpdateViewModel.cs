@@ -1,12 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace ConnectHub.ViewModels
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Shared.Interfaces;
+using Shared.Models;
+using Shared.Repositories;
+
+namespace ConnectHub.ViewModels;
+
+public partial class UpdateViewModel : ObservableObject, IQueryAttributable
 {
-    class UpdateViewModel
+    private readonly IPersonRepository _personRepository;
+
+    public UpdateViewModel(IPersonRepository personRepository)
     {
+        _personRepository = personRepository;
+    }
+
+    [ObservableProperty]
+    private Person person = new();
+
+    [RelayCommand]
+    public async Task Update()
+    {
+        _personRepository.UpdatePerson(Person); 
+        Person = new ();
+        await Shell.Current.GoToAsync("//PersonsListPage");
+    }
+
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        Person = (query["Update"] as Person)!;
     }
 }

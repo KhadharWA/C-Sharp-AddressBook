@@ -45,7 +45,7 @@ public class PersonRepository : IPersonRepository
         try
         {
             GetPersonsFromList();
-            PersonListUpdated?.Invoke(this, new EventArgs());
+            
             var person = _personsList.FirstOrDefault(x => x.Email == email);
             return person ??= null!;
         }

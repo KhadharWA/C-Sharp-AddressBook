@@ -13,7 +13,7 @@ namespace ConnectHub
             Routing.RegisterRoute(nameof(AddPersonPage),typeof(AddPersonPage));
             Routing.RegisterRoute(nameof(ShowPersonPage),typeof(ShowPersonPage));
             Routing.RegisterRoute(nameof(UpdatePersonPage),typeof(UpdatePersonPage));
-            Routing.RegisterRoute(nameof(RemovePersonPage),typeof(RemovePersonPage));
+            
         }
     }
 }

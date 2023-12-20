@@ -20,17 +20,23 @@ namespace ConnectHub
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            builder.Services.AddSingleton<MainViewModel>();
-            builder.Services.AddSingleton<MainPage>();
+           
+
             builder.Services.AddSingleton<IPersonRepository, PersonRepository>();
+
             builder.Services.AddSingleton<IFileService, FileService>();
+
             builder.Services.AddSingleton<AddPersonPage>();
             builder.Services.AddSingleton<PersonsListPage>();
-            builder.Services.AddSingleton<RemovePersonPage>();
+            
             builder.Services.AddSingleton<ShowPersonPage>();
             builder.Services.AddSingleton<UpdatePersonPage>();
+
             builder.Services.AddSingleton<AddViewModel>();
             builder.Services.AddSingleton<PersonListViewModel>();
+            builder.Services.AddSingleton<ShowViewModel>();
+            
+            builder.Services.AddSingleton<UpdateViewModel>();
 
 
 
