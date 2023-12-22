@@ -27,15 +27,15 @@ namespace ConnectHub
             builder.Services.AddSingleton<IFileService, FileService>();
 
             builder.Services.AddSingleton<AddPersonPage>();
-            builder.Services.AddSingleton<PersonsListPage>();
-            
-            builder.Services.AddSingleton<ShowPersonPage>();
-            builder.Services.AddSingleton<UpdatePersonPage>();
-
             builder.Services.AddSingleton<AddViewModel>();
-            builder.Services.AddSingleton<PersonListViewModel>();
+
+            builder.Services.AddSingleton<ShowPersonPage>();
             builder.Services.AddSingleton<ShowViewModel>();
-            
+
+            builder.Services.AddSingleton<PersonListViewModel>();
+            builder.Services.AddSingleton<PersonsListPage>();
+
+            builder.Services.AddSingleton<UpdatePersonPage>();
             builder.Services.AddSingleton<UpdateViewModel>();
 
 

@@ -1,0 +1,1 @@
+{"$type":"System.Collections.Generic.List`1[[Shared.Interfaces.IPerson, Shared]], System.Private.CoreLib","$values":[{"$type":"Shared.Models.Person, Shared","FirstName":"a","LastName":"a","Email":"a","PhoneNumber":"a","Address":"a"},{"$type":"Shared.Models.Person, Shared","FirstName":null,"LastName":null,"Email":null,"PhoneNumber":null,"Address":null}]}

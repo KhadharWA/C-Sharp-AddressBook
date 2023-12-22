@@ -5,7 +5,7 @@ namespace Shared.Interfaces;
 public interface IPersonRepository
 {
 
-    event EventHandler PersonListUpdated;
+    event EventHandler PersonsListUpdated;
 
     bool AddPersonToList(IPerson person);
 

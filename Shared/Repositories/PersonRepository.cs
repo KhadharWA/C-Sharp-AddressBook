@@ -18,7 +18,7 @@ public class PersonRepository : IPersonRepository
 
     public List<IPerson> _personsList = [];
     private readonly string _filePath = @"c:\utb-Projects\AdressBook\contacts.json";
-    public event EventHandler? PersonListUpdated;
+    public event EventHandler? PersonsListUpdated;
 
 
     public bool AddPersonToList(IPerson person)
@@ -28,11 +28,12 @@ public class PersonRepository : IPersonRepository
             if (!_personsList.Any(x => x.Email == person.Email))
             {
                 _personsList.Add(person);
-                PersonListUpdated?.Invoke(this, new EventArgs());
+                
 
                 string json = JsonConvert.SerializeObject(_personsList, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
 
                 var result = _fileService.SaveContectToFile(_filePath, json);
+                PersonsListUpdated?.Invoke(this, EventArgs.Empty);
                 return result;
             }
         }
@@ -75,13 +76,14 @@ public class PersonRepository : IPersonRepository
         try
         {
             GetPersonsFromList();
-            PersonListUpdated?.Invoke(this, new EventArgs());
+            
             var personToRemove = _personsList.FirstOrDefault(x => x.Email == email);
 
             if (personToRemove != null)
             {
                 _personsList.Remove(personToRemove);
                 SavePersonsListToFile();
+                PersonsListUpdated?.Invoke(this, EventArgs.Empty);
                 return true;
             }
         }
@@ -94,7 +96,7 @@ public class PersonRepository : IPersonRepository
         try
         {
             GetPersonsFromList();
-            PersonListUpdated?.Invoke(this, new EventArgs());
+            
             var existingPerson = _personsList.FirstOrDefault(x => x.Email == updatedPerson.Email);
 
             if (existingPerson != null)
@@ -105,6 +107,7 @@ public class PersonRepository : IPersonRepository
                 existingPerson.Address = updatedPerson.Address;
 
                 SavePersonsListToFile();
+                PersonsListUpdated?.Invoke(this, EventArgs.Empty);
                 return true;
             }
         }

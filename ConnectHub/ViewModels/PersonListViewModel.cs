@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using Shared.Interfaces;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 
 namespace ConnectHub.ViewModels;
@@ -17,17 +18,27 @@ public partial class PersonListViewModel : ObservableObject
     public PersonListViewModel(IPersonRepository personRepository)
     {
         _personRepository = personRepository;
-        _personRepository.PersonListUpdated += (sender, e) =>
+
+        _personRepository.PersonsListUpdated += (sender, e) =>
         {
-            PersonList = new ObservableCollection<IPerson>(_personRepository.GetPersonsFromList());  
+            try
+            {
+                PersonsList = new ObservableCollection<IPerson>(_personRepository.GetPersonsFromList());
+            }
+            catch (Exception ex) { Debug.WriteLine($"Error updating PersonList: {ex.Message}"); }
         };
 
-        
+
 
     }
 
     [ObservableProperty]
-    private ObservableCollection<IPerson> _personList = [];
+    private ObservableCollection<IPerson> _personsList = [];
+
+
+
+
+
 
     [RelayCommand]
     private async Task NavigateToEdit(IPerson updatedPerson)
@@ -62,6 +73,6 @@ public partial class PersonListViewModel : ObservableObject
     private void Remove(string email)
     {
         _personRepository.RemovePersonFromList(email);
-        PersonList = new ObservableCollection<IPerson>(_personRepository.GetPersonsFromList());
+        PersonsList = new ObservableCollection<IPerson>(_personRepository.GetPersonsFromList());
     }
 }

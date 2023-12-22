@@ -1,9 +1,12 @@
+using ConnectHub.ViewModels;
+
 namespace ConnectHub.Pages;
 
 public partial class UpdatePersonPage : ContentPage
 {
-	public UpdatePersonPage()
+	public UpdatePersonPage(UpdateViewModel viewModel)
 	{
 		InitializeComponent();
+		BindingContext = viewModel;
 	}
 }

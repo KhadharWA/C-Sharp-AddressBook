@@ -36,7 +36,7 @@ public partial class ShowViewModel : ObservableObject
         {
             SelectedPerson = _personRepository.GetPersonByEmail(EmailInput);
             EmailInput = string.Empty;
-
+            PersonsList = new ObservableCollection<IPerson>(_personRepository.GetPersonsFromList());
         }
     }
 
