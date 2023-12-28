@@ -13,18 +13,26 @@ public partial class AddViewModel : ObservableObject
 {
     private readonly IPersonRepository _personRepository;
 
+    /// <summary>
+    /// Initializes a new instance of the AddViewModel class.
+    /// </summary>
+    /// <param name="personRepository">Repository for handling person data operations.</param>
     public AddViewModel(IPersonRepository personRepository)
     {
         _personRepository = personRepository;
         
     }
 
+    /// <summary>
+    /// Holds the form data for a new person registration.
+    /// </summary>
     [ObservableProperty]
     private Person _registrationForm = new();
 
-    
 
-
+    /// <summary>
+    /// Adds the content of the registration form to the person list and navigates to the persons list page.
+    /// </summary>
     [RelayCommand]
     public async Task AddContentToList()
     {
@@ -33,11 +41,18 @@ public partial class AddViewModel : ObservableObject
             var result = _personRepository.AddPersonToList(RegistrationForm);
             if (result)
             {
-                _personRepository.AddPersonToList(RegistrationForm);
-                RegistrationForm = new ();
                 
+                RegistrationForm = new ();
 
-                await Shell.Current.GoToAsync("//PersonsListPage");
+
+                try
+                {
+                    await Shell.Current.GoToAsync("//PersonsListPage");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Navigation error: {ex.Message}");
+                }
             }
             else
             {

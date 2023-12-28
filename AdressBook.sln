@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBook.ConsoleApp", "A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp.Tests", "ConsoleApp.Tests\ConsoleApp.Tests.csproj", "{EB29974D-CC29-4217-A164-C8B6F032A342}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectHub", "ConnectHub\ConnectHub.csproj", "{5C091A9A-6479-49A5-BED8-85CE2C7C8F35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectHub", "ConnectHub\ConnectHub.csproj", "{5C091A9A-6479-49A5-BED8-85CE2C7C8F35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

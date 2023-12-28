@@ -16,36 +16,36 @@
             <VerticalStackLayout Grid.Row="0">
                 <Label Text="Contact List" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold" />
             
-            <StackLayout Grid.Row="1">
-                <Button Text="Add Content To List"  Command="{Binding Path=NavigateToAddCommand}" Margin="0,20,0,20" />
-                <Button Text="Show Content In List"  Command="{Binding Path=NavigateToShowCommand}" Margin="0,0,0,20" />
-            </StackLayout>
-            
+                <StackLayout Grid.Row="1">
+                        <Button Text="Add Content To List"  Command="{Binding Path=NavigateToAddCommand}" Margin="0,20,0,20" BackgroundColor="#F0D082" CornerRadius="20" FontAttributes="Bold" TextColor="White" FontSize="Medium" BorderColor="Black" BorderWidth="2"/>
+                        <Button Text="Show Content In List"  Command="{Binding Path=NavigateToShowCommand}" Margin="0,0,0,20" BackgroundColor="#191919" CornerRadius="20" FontAttributes="Bold" TextColor="White" FontSize="Medium" BorderColor="White" BorderWidth="2"/>
+                </StackLayout>
 
-            <CollectionView Grid.Row="2" ItemsSource="{Binding PersonsList}" Margin="0,20,0,0">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="{x:Type models:Person}">
-                        <Frame BackgroundColor="Lavender" BorderColor="Lavender" Padding="10" Margin="0">
-                            <Grid ColumnDefinitions="*, Auto" Padding="10">
-                                <StackLayout Grid.Column="0">
 
-                                    <Label Text="{Binding FirstName}" FontSize="16" />
-                                    <Label Text="{Binding LastName}" FontSize="16" />
-                                    <Label Text="{Binding Email}" FontSize="16" />
-                                    <Label Text="{Binding PhoneNumber}" FontSize="16"/>
-                                    <Label Text="{Binding Address}" FontSize="16" />
+                <CollectionView Grid.Row="2" ItemsSource="{Binding PersonsList}" Margin="0,20,0,0" >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type models:Person}">
+                            <Frame BackgroundColor="White" BorderColor="LightGray" CornerRadius="10" Padding="10"  Margin="0,5,0,5" HasShadow="True"   >
+                                <Grid ColumnDefinitions="*, Auto" Padding="10" >
+                                    <StackLayout Grid.Column="0">
 
-                                    <HorizontalStackLayout Grid.Column="1">
-                                        <Button Text="EDIT" CommandParameter="{Binding .}" Command="{Binding Path=NavigateToEditCommand, Source={RelativeSource AncestorType={x:Type viewmodels:PersonListViewModel}}}" Margin="5,0,0,0" />
-                                        <Button Text="DELETE" CommandParameter="{Binding .}" Command="{Binding Path=RemoveCommand, Source={RelativeSource AncestorType={x:Type viewmodels:PersonListViewModel}}}" Margin="5,0,0,0" />
-                                    </HorizontalStackLayout>
+                                            <Label Text="{Binding FirstName}" FontSize="16" FontAttributes="Bold" TextColor="DarkSlateGray" />
+                                            <Label Text="{Binding LastName}" FontSize="16" TextColor="SlateGray" />
+                                            <Label Text="{Binding Email}" FontSize="16" TextColor="LightSlateGray" />
+                                            <Label Text="{Binding PhoneNumber}" FontSize="16" TextColor="LightSlateGray"/>
+                                            <Label Text="{Binding Address}" FontSize="16"  TextColor="LightSlateGray"/>
 
-                                </StackLayout>
-                            </Grid>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                            <HorizontalStackLayout Grid.Column="1" Spacing="10"  >
+                                                <Button Text="EDIT" CommandParameter="{Binding .}" Command="{Binding Path=NavigateToEditCommand, Source={RelativeSource AncestorType={x:Type viewmodels:PersonListViewModel}}}" Margin="0,5,0,0" BackgroundColor="LightGreen" TextColor="White" />
+                                                <Button Text="DELETE" CommandParameter="{Binding Email}" Command="{Binding Path=RemoveCommand, Source={RelativeSource AncestorType={x:Type viewmodels:PersonListViewModel}}}" Margin="0,5,0,0" BackgroundColor="Crimson" TextColor="White" />
+                                            </HorizontalStackLayout>
+
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </VerticalStackLayout>
         </Grid>
             

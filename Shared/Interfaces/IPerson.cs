@@ -2,6 +2,10 @@
 
 namespace Shared.Interfaces;
 
+
+/// <summary>
+/// Defines the contract for a person with basic contact details.
+/// </summary>
 public interface IPerson
 {
     public string FirstName { get; set; }

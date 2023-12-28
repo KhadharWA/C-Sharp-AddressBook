@@ -2,7 +2,11 @@
 
 namespace Shared.Interfaces;
 
-public  interface IFileService
+
+/// <summary>
+/// Defines the contract for a service handling file operations.
+/// </summary>
+public interface IFileService
 {
     bool SaveContectToFile(string filePath, string content);
 

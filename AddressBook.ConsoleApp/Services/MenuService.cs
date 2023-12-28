@@ -5,18 +5,26 @@ using Shared.Interfaces;
 
 namespace AddressBook.ConsoleApp.Services;
 
-
+/// <summary>
+/// Provides a console-based menu interface for managing persons.
+/// </summary>
 public class MenuService
 {
     private readonly IPersonRepository _personRepository;
 
+    /// <summary>
+    /// Initializes the MenuService with a person repository.
+    /// </summary>
+    /// <param name="personRepository">The repository for person data operations.</param>
     public MenuService(IPersonRepository personRepository)
     {
         _personRepository = personRepository;
     }
 
 
-    
+    /// <summary>
+    /// Displays and handles the main menu options.
+    /// </summary>
     public void ShowMainMenu()
     {
         while (true)
@@ -60,8 +68,10 @@ public class MenuService
         }
     }
 
-
-    public  void AddPersonMenu()
+    /// <summary>
+    /// Handles the addition of a new person through a console interface.
+    /// </summary>
+    public void AddPersonMenu()
     {
         Person person = new Person();
 
@@ -112,8 +122,10 @@ public class MenuService
     }
 
 
-
-    public  void ShowAllPersonsMenu()
+    /// <summary>
+    /// Displays all persons in the list.
+    /// </summary>
+    public void ShowAllPersonsMenu()
     {
         var persons = _personRepository.GetPersonsFromList();
 
@@ -142,7 +154,9 @@ public class MenuService
     }
 
 
-
+    /// <summary>
+    /// Retrieves and displays a person's details based on the provided email.
+    /// </summary>
     public void ShowPersonByEmailMenu()
     {
         Console.WriteLine("Enter the email of the user: ");
@@ -174,7 +188,9 @@ public class MenuService
 
     }
 
-
+    /// <summary>
+    /// Handles the removal of a person from the list based on the provided email.
+    /// </summary>
     public void DeletePersonInList()
     {
         Console.WriteLine("Enter the email of the user to remove: ");

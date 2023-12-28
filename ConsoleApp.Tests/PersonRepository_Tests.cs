@@ -24,7 +24,7 @@ public class PersonRepository_Tests
         bool result = personRepository.AddPersonToList(person);
 
         //Assert
-        Assert.True(result);// Check if the person was successfully Added
+        Assert.True(result);
     }
 
     [Fact]
@@ -43,9 +43,9 @@ public class PersonRepository_Tests
         IEnumerable<IPerson> result = personRepository.GetPersonsFromList();
 
         // Assert
-        Assert.NotNull(persons); // Check if the returned list is not null
-        Assert.IsAssignableFrom<IEnumerable<IPerson>>(persons); // Check if the returned value is a list of IPerson
-        Assert.NotEmpty(persons); // Check if the returned list is not empty
+        Assert.NotNull(persons); 
+        Assert.IsAssignableFrom<IEnumerable<IPerson>>(persons); 
+        Assert.NotEmpty(persons); 
     }
 
     [Fact]
@@ -61,7 +61,7 @@ public class PersonRepository_Tests
         bool result = personRepository.RemovePersonFromList("Khadhar@domain.com");
 
         // Assert
-        Assert.True(result); // Check if the person was successfully removed
+        Assert.True(result); 
     }
 
     [Fact]
@@ -103,6 +103,6 @@ public class PersonRepository_Tests
         bool result = personRepository.UpdatePerson(updatedPerson);
 
         // Assert
-        Assert.True(result); // Check if the person was successfully updated
+        Assert.True(result); 
     }
 }

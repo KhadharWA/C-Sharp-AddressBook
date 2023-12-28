@@ -7,7 +7,9 @@ using Shared.Services;
 
 
 
-
+/// <summary>
+/// Configures the application's services and builds the host.
+/// </summary>
 var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
 {
     services.AddSingleton<IPersonRepository, PersonRepository>();
@@ -17,6 +19,9 @@ var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
 
 }).Build();
 
+/// <summary>
+/// Starts the application and displays the main menu.
+/// </summary>
 builder.Start();
 Console.Clear();
 

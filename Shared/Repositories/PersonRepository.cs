@@ -7,10 +7,18 @@ using System.Diagnostics;
 
 namespace Shared.Repositories;
 
+
+/// <summary>
+/// A repository for managing person entities.
+/// </summary>
 public class PersonRepository : IPersonRepository
 {
     private readonly IFileService _fileService;
 
+    /// <summary>
+    /// Initializes the repository with a file service dependency.
+    /// </summary>
+    /// <param name="fileService">Service for file operations.</param>
     public PersonRepository(IFileService fileService)
     {
         _fileService = fileService;
@@ -21,6 +29,14 @@ public class PersonRepository : IPersonRepository
     public event EventHandler? PersonsListUpdated;
 
 
+
+
+
+    /// <summary>
+    /// Adds a new person to the list if not already present.
+    /// </summary>
+    /// <param name="person">Person to add.</param>
+    /// <returns>True if the addition was successful, false otherwise.</returns>
     public bool AddPersonToList(IPerson person)
     {
         try
@@ -41,6 +57,11 @@ public class PersonRepository : IPersonRepository
         return false;
     }
 
+    /// <summary>
+    /// Retrieves a person by their email address.
+    /// </summary>
+    /// <param name="email">Email of the person to find.</param>
+    /// <returns>The person if found, null otherwise.</returns>
     public IPerson GetPersonByEmail(string email)
     {
         try
@@ -54,6 +75,11 @@ public class PersonRepository : IPersonRepository
         return null!;
     }
 
+
+    /// <summary>
+    /// Loads and returns all persons from the list.
+    /// </summary>
+    /// <returns>An enumerable of persons.</returns>
     public IEnumerable<IPerson> GetPersonsFromList()
     {
         try
@@ -71,6 +97,13 @@ public class PersonRepository : IPersonRepository
         return null!;
     }
 
+
+
+    /// <summary>
+    /// Removes a person from the list by their email.
+    /// </summary>
+    /// <param name="email">Email of the person to remove.</param>
+    /// <returns>True if removal was successful, false otherwise.</returns>
     public bool RemovePersonFromList(string email)
     {
         try
@@ -90,6 +123,14 @@ public class PersonRepository : IPersonRepository
         catch (Exception ex) { Debug.WriteLine(ex.Message); }
         return false;
     }
+
+
+
+    /// <summary>
+    /// Updates the information of an existing person.
+    /// </summary>
+    /// <param name="updatedPerson">Person with updated information.</param>
+    /// <returns>True if the update was successful, false otherwise.</returns>
 
     public bool UpdatePerson(IPerson updatedPerson)
     {
@@ -115,6 +156,11 @@ public class PersonRepository : IPersonRepository
         return false;
     }
 
+
+
+    /// <summary>
+    /// Saves the current list of persons to a file.
+    /// </summary>
     private void SavePersonsListToFile()
     {
         string json = JsonConvert.SerializeObject(_personsList, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });

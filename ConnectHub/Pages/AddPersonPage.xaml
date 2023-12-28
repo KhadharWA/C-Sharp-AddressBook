@@ -12,27 +12,27 @@
         <Grid RowDefinitions="Auto,Auto, *" Margin="20">
             
             <StackLayout Grid.Row="0">
-                <Label Text="Add new person to list!" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold"    />
+                <Label Text="Add New Contact To List!" VerticalOptions="Center" HorizontalOptions="Center" FontSize="24" FontAttributes="Bold" TextColor="#2C3E50"   />
             </StackLayout>
 
             <StackLayout Grid.Row="1" Margin="0,20,0,0">
                 
-                <Label Text="First Name"/>
-                <Entry Text="{Binding RegistrationForm.FirstName}"/>
+                <Label Text="First Name" TextColor="Gray"/>
+                <Entry Text="{Binding RegistrationForm.FirstName}" Placeholder="Enter first name" BackgroundColor="#ECF0F1" TextColor="Black"/>
 
-                <Label Text="Last Name"/>
-                <Entry Text="{Binding RegistrationForm.LastName}"/>
+                <Label Text="Last Name" TextColor="Gray"/>
+                <Entry Text="{Binding RegistrationForm.LastName}" Placeholder="Enter last name" BackgroundColor="#ECF0F1" TextColor="Black"/>
 
-                <Label Text="Email"/>
-                <Entry Text="{Binding RegistrationForm.Email}"/>
+                <Label Text="Email" TextColor="Gray"/>
+                <Entry Text="{Binding RegistrationForm.Email}" Placeholder="Enter email" Keyboard="Email" BackgroundColor="#ECF0F1" TextColor="Black"/>
 
-                <Label Text="Phone Number"/>
-                <Entry Text="{Binding RegistrationForm.PhoneNumber}"/>
+                <Label Text="Phone Number" TextColor="Gray"/>
+                <Entry Text="{Binding RegistrationForm.PhoneNumber}" Placeholder="Enter phone number" Keyboard="Telephone"  BackgroundColor="#ECF0F1" TextColor="Black"/>
 
-                <Label Text="Address"/>
-                <Entry Text="{Binding RegistrationForm.Address}"/>
+                <Label Text="Address" TextColor="Gray" />
+                <Entry Text="{Binding RegistrationForm.Address}" Placeholder="Enter address" BackgroundColor="#ECF0F1" TextColor="Black"/>
 
-                <Button Command="{Binding AddContentToListCommand}" Text="Save" Margin="0,20,0,20" Padding="0,10"/>
+                <Button Command="{Binding AddContentToListCommand}" Text="Save" Margin="0,20,0,20" Padding="0,10" BackgroundColor="#3498DB" TextColor="White" FontAttributes="Bold" CornerRadius="5"/>
                 
             </StackLayout>
 
